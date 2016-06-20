@@ -7,13 +7,9 @@ require 'mechanize'
 
 
 get '/' do
-  @shops = Shop.where("id < ?", 10)
+  @shops = Shop.all
   erb :index
 end
-
-
-
-
 
 
 
