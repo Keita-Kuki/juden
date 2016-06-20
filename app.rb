@@ -1,7 +1,21 @@
 require 'bundler/setup'
 Bundler.require
 require 'sinatra/reloader' if development?
+require './models/shop.rb'
 require 'mechanize'
+
+
+
+get '/' do
+  @shops = Shop.where("id < ?", 10)
+  erb :index
+end
+
+
+
+
+
+
 
 # 管理者ページ　スクレイピング更新
 get '/admin' do
@@ -9,17 +23,6 @@ get '/admin' do
 end
 
 post '/scrape' do
-  agent = Mechanize.new
-  page = agent.get("http://www.starbucks.co.jp/store/search/result.php?search_type=1&pref_code=13&city=")
-  storeName = page.search('//p[@class="storeName"]')
-  forSp = page.search('//p[@class="forSp"]')
-  storeAddress = page.search('//p[@class="storeAdress"]')
-  
-  puts forSp
-  
+  # tset.rb を実行
   redirect '/'
-end
-
-get '/' do
-  erb :index
 end

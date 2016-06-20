@@ -5,12 +5,13 @@
 
 function initMap() {
 	var map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 35.685175, lng: 139.7528},
+		// center: {lat: 35.685175, lng: 139.7528},
 		zoom: 15
 	});
-	// var image = 'map/map_icon_now.png';
-	var infoWindow = new google.maps.InfoWindow({map: map});
-	var marker = new google.maps.Marker({map: map});
+	
+	var image = '/images/map/mapicon1.png';
+// 	var infoWindow = new google.maps.InfoWindow({map: map});
+	var marker = new google.maps.Marker({map: map, icon: image});
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -18,18 +19,20 @@ function initMap() {
     var pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
-    };
+  };
 
-    // infoWindow.setPosition(pos);
-    // infoWindow.setContent('現在位置');
-    // map.setCenter(pos);
-    
-
+  // infoWindow.setPosition(pos);
+  // infoWindow.setContent('現在位置');
+  // map.setCenter(pos);
+  <%= @shops.each %>
+  
+  
+  
 	marker.setPosition(pos);
 	marker.setAnimation(google.maps.Animation.DROP);
 	map.setCenter(pos);
 	
-    }, function() {
+  }, function() {
       handleLocationError(true, infoWindow, map.getCenter());
     });
   } else {
@@ -41,6 +44,6 @@ function initMap() {
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
   infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
+  'Error: The Geolocation service failed.' :
+  'Error: Your browser doesn\'t support geolocation.');
 }
