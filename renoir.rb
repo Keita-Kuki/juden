@@ -137,7 +137,7 @@ for i in 0..n-1 do
         address: shopAdress[i],
         lat: latlng[0],
         lng: latlng[1],
-        category: 'ルノアール'
+        category: 'renoir'
     })
 end
 

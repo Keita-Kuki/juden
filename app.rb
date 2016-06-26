@@ -11,7 +11,9 @@ get '/' do
   erb :index
 end
 
-
+get '/giveup' do
+  erb :give
+end
 
 # 管理者ページ　スクレイピング更新
 get '/admin' do

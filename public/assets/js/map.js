@@ -24,7 +24,6 @@ function initMap() {
   // infoWindow.setPosition(pos);
   // infoWindow.setContent('現在位置');
   // map.setCenter(pos);
-  <%= @shops.each %>
   
   
   

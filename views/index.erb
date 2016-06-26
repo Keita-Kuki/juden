@@ -7,9 +7,15 @@
     <link rel="stylesheet" href="/assets/css/map.css">
   </head>
   
-  
-  
+
   <body>
+    
+    <header>
+      <p>
+        <img title="logo" src="images/html/header_logo.jpg" width="100%" id="h_logo">
+      </p>
+    </header>
+    
     <div id="map"></div>
     <!--<script src="/assets/js/map.js"></script>-->
     <script>
@@ -19,37 +25,45 @@
       // locate you.
       
       function initMap() {
-      	var map = new google.maps.Map(document.getElementById('map'), {
+        var pos;
+          // Specify features and elements to define styles.
+        var styleArray = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"}]},{"featureType":"landscape.man_made","elementType":"geometry.fill","stylers":[{"hue":"#ffd100"},{"saturation":"44"}]},{"featureType":"landscape.man_made","elementType":"geometry.stroke","stylers":[{"saturation":"-1"},{"hue":"#ff0000"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"saturation":"-16"}]},{"featureType":"landscape.natural","elementType":"geometry.fill","stylers":[{"hue":"#ffd100"},{"saturation":"44"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":"-30"},{"lightness":"12"},{"hue":"#ff8e00"}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"},{"saturation":"-26"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c0b78d"},{"visibility":"on"},{"saturation":"4"},{"lightness":"40"}]},{"featureType":"water","elementType":"geometry","stylers":[{"hue":"#ffe300"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"hue":"#ffe300"},{"saturation":"-3"},{"lightness":"-10"}]},{"featureType":"water","elementType":"labels","stylers":[{"hue":"#ff0000"},{"saturation":"-100"},{"lightness":"-5"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels.text.stroke","stylers":[{"visibility":"off"}]}]
+        ;
+        var map = new google.maps.Map(document.getElementById('map'), {
       		// center: {lat: 35.685175, lng: 139.7528},
-      		zoom: 15
+      		zoom: 16,
+      		mapTypeControl: false,
+      		panControl: false,
+      		zoomControl: false,
+      		streetViewControl: false,
+      		styles: styleArray,
+      		minZoom: 13
       	});
-      	
       	var image = '/images/map/mapicon1.png';
-      // 	var infoWindow = new google.maps.InfoWindow({map: map});
-      	var marker = new google.maps.Marker({map: map, icon: image});
-      
+        // 	var infoWindow = new google.maps.InfoWindow({map: map});
+        var marker = new google.maps.Marker({map: map, icon: image});
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-        };
-      
+          pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          
         // infoWindow.setPosition(pos);
         // infoWindow.setContent('現在位置');
         // map.setCenter(pos);
         <% @shops.each do |shop| %>
+        shopicon = '/images/map/icon_<%= shop.category %>.png'
         markerLatLng = {lat: <%= shop.lat %>, lng: <%= shop.lng %>}; // 緯度経度のデータ作成
         shopmarker = new google.maps.Marker({ // マーカーの追加
             position: markerLatLng, // マーカーを立てる位置を指定
-            map: map // マーカーを立てる地図を指定
+            map: map, // マーカーを立てる地図を指定
+            icon: shopicon
         });
         <% end %>
         
-        
-        
-        
+      
       	marker.setPosition(pos);
       	marker.setAnimation(google.maps.Animation.DROP);
       	map.setCenter(pos);
@@ -71,9 +85,29 @@
       }
     </script>
     
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEJeA7t32_Dl7EBW99S4-a4phBoJAovzY&signed_in=true&callback=initMap"
-        async defer>
+    
+    
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEJeA7t32_Dl7EBW99S4-a4phBoJAovzY&signed_in=true&callback=initMap"async defer>
     </script>
     
+    
+    
+  <section>
+    <form action="/giveup" method="get">
+      <div id="submit"><input type="image" src="images/html/give2.jpg" alt="give" width="50%"></div>
+    </form>
+  </section>
+  
+  <footer>
+    <!--<p>-->
+    <!--    <img title="footer" src="images/html/header_logo.jpg" width="20%" id="f_logo">-->
+    <!--</p>-->
+    <p id="f_logo">JUDEN</p>
+    <p>LiT Leaders 8th</p>
+    <p>Web Service Cource</p>
+    <p>Final Project</p>
+  </footer>
+  
   </body>
 </html>

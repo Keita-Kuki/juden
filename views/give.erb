@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>give</title>
+  
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script type="text/javascript">
+    $(function(){
+        $("#loading").css({opacity:'1'});
+        setTimeout(function(){
+          $("#loading").fadeOut(500);
+        },2000);
+      
+        $("#container").css({opacity:'0'});
+        setTimeout(function(){
+            $("#container").stop().animate({opacity:'1'},1000);
+        },3000);
+    });
+  </script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="/assets/js/jquery.bxslider.min.js"></script>
+  <link href="/assets/css/jquery.bxslider.css" rel="stylesheet" />
+  <script type="text/javascript">
+    $(document).ready(function(){
+        $('.bxslider').bxSlider({
+            auto: true,
+            mode: 'fade',
+            pause: 4800,
+            pager: false,
+            touchEnabled: true,
+            swipeThreshold: 10000,
+        });
+    });
+  </script>
+
+  <link href="/assets/css/give.css" rel="stylesheet" />
+</head>
+
+<body>
+  <audio src="bgm/bgmtest.mp3" autoplay loop></audio>
+
+  <div  id="loading"><img src="images/gif/loading.gif" width="100%"></div>
+  
+  
+  <div id="container">
+    
+    <header>
+      <p>
+        <img title="logo" src="images/html/header_logo.jpg" width="100%" id="h_logo">
+      </p>
+    </header>
+  
+    <ul class="bxslider">
+      <li><img title="" alt="" src="images/slide/1.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/gif/forme.gif" width="100%"></li>
+      <li><img title="" alt="" src="images/slide/2.jpg" width="100%"></li>
+       <!--<li><img title="" alt="" src="images/gif/thank.gif" width="100%"></li>-->
+      <li><img title="" alt="" src="images/slide/3.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/slide/4.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/gif/someday.gif" width="100%"></li>
+      <li><img title="" alt="" src="images/slide/5.jpg" width="100%"></li>
+       <!--<li><img title="" alt="" src="images/gif/someday.gif" width="100%"></li>-->
+      <li><img title="" alt="" src="images/slide/6.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/slide/7.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/gif/time.gif" width="100%"></li>
+      <li><img title="" alt="" src="images/slide/8.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/slide/9.jpg" width="100%"></li>
+      <li><img title="" alt="" src="images/gif/seeyou.gif" width="100%"></li>
+      <!--<li><img title="" alt="" src="images/slide/10.jpg" width="100%"></li>-->
+    </ul>
+    
+    
+    <section>
+      <form action="/" method="get">
+        <div id="submit"><input type="image" src="images/html/submit.jpg" alt="諦めない" width="50%"></div>
+      </form>
+    </section>
+      
+  </div>
+  
+</body>
+
+</html>
