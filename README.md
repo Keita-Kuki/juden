@@ -1,1 +1,1 @@
-Life is Tech ! の教材で利用する `Sinatra` テンプレートです。
+This project is a training program in `Life is Tech!`.
